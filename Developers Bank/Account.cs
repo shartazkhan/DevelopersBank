@@ -77,6 +77,7 @@ namespace Developers_Bank
 
         public static void Show()
         {
+
             Console.WriteLine("Trans: {0}\nBalance: {1}", Account.transCount, Account.balance);
             
         }

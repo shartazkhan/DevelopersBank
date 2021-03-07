@@ -12,24 +12,13 @@ namespace Developers_Bank
         private static Account[] myBank;
         public static int size;
         public int flag = 0;
-        //public string chooice;
-       //private string teampAccount;
-        //private double teampAmount;
-       // private string receiver;
-       
        
         public Bank(string bankName,int size)
         {
             Bank.size = size;
             this.bankName = bankName;
             myBank = new Account[size];
-        }
-        public void AccessAccount()
-        {
-           
-        }
-
-        
+        } 
 
         public Account[] MyBank
         {
@@ -68,7 +57,7 @@ namespace Developers_Bank
                     continue;
                    
                 }
-                else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposite")
+                else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposit")
                 {
                    
                     myBank[i].Deposite(teampAmmount);
@@ -101,7 +90,7 @@ namespace Developers_Bank
                 }
                 else
                 {
-                    Console.WriteLine("Transaction method no case");
+                    continue;
                 }
 
             }

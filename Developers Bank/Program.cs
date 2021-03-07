@@ -18,11 +18,11 @@ namespace Developers_Bank
         private static void Main(string[] args)
         {
             Bank theBank = new Bank("Developer's bank", 100);
-            
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("----------------------------------------------------------------");
             Console.WriteLine(" \t\tWelcome to Developers Bank LTD");
             Console.WriteLine("----------------------------------------------------------------");
-
+            Console.ForegroundColor = ConsoleColor.White;
             // While loop for 
             while (flag)
             {
@@ -110,10 +110,11 @@ namespace Developers_Bank
 
                         while (flag3)
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("----------------------------------------------------------------");
                             Console.WriteLine(" \t  Make a  Transactions  With Developers Bank LTD");
                             Console.WriteLine("----------------------------------------------------------------");
-
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("Please Enter a Command to Progress: \n");
                             Console.WriteLine("deposit --> Make a deposit\nwithdraw --> Make a withdrawal\ntransfer --> Make a transfer\nshow --> Show the number transactions and balance\nquit --> Exit the application ");
                             chooice = Console.ReadLine();
@@ -132,7 +133,7 @@ namespace Developers_Bank
                                     
                                     theBank.Transaction(teampAmount, chooice, teampAccount);
 
-
+                                    Console.WriteLine("----------------------------------------------------------------");
 
                                     break;
 
@@ -145,6 +146,8 @@ namespace Developers_Bank
                                     teampAmount = Convert.ToDouble(Console.ReadLine());
 
                                     theBank.Transaction(teampAmount, chooice, teampAccount);
+
+                                    Console.WriteLine("----------------------------------------------------------------");
 
                                     break;
 
@@ -159,7 +162,7 @@ namespace Developers_Bank
                                     string receiver = Console.ReadLine();
 
                                     theBank.Transaction(teampAmount, chooice, teampAccount, receiver);
-
+                                    Console.WriteLine("----------------------------------------------------------------");
                                     break;
                                 case "show":
                                     Account obj;
@@ -169,7 +172,7 @@ namespace Developers_Bank
                                 case "quit":
 
                                     flag3 = false;
-
+                                    Console.WriteLine("----------------------------------------------------------------");
                                     break;
                                 default:
                                     Console.WriteLine("--------------------------------");
@@ -179,17 +182,13 @@ namespace Developers_Bank
                             }
 
                         }
-                        /*theBank.AccessAccount();
-                        if (theBank.Flag == 1)
-                        {
-                            flag = false;
-                        }*/
+                        Console.WriteLine("----------------------------------------------------------------");
                         break;
 
                     case "quit":
                         
                         flag = false;
-
+                        //Console.WriteLine("----------------------------------------------------------------");
                         break;
                     default:
                         Console.WriteLine("--------------------------------");
@@ -200,9 +199,10 @@ namespace Developers_Bank
                 }
 
             }
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine(" Thank you for staying with us!");
-            Console.WriteLine("--------------------------------");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine(" \t\tThank you for staying with us!");
+            Console.WriteLine("----------------------------------------------------------------");
             Console.ReadKey();
         }
 
