@@ -9,8 +9,8 @@ namespace Developers_Bank
     class Address
     {
 
-        private int houseNo, roadNo;
-        private string city, country;
+        protected int houseNo, roadNo;
+        protected string city, country;
 
         public Address(int houseNo, int roadNo, string city, string country)
         {

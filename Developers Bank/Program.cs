@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Developers_Bank
 {
-    class Program
+    internal class Program
     {
        
         public static bool flag = true;  //this flag is used for iteration and all exit the menu
@@ -15,9 +15,10 @@ namespace Developers_Bank
         public static string chooice;
         public static string chooice2;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Bank theBank = new Bank("Developer's bank", 100);
+            
             Console.WriteLine("----------------------------------------------------------------");
             Console.WriteLine(" \t\tWelcome to Developers Bank LTD");
             Console.WriteLine("----------------------------------------------------------------");
@@ -26,6 +27,7 @@ namespace Developers_Bank
             while (flag)
             {
                 bool flag2 = true;
+                bool flag3 = true;
                 Console.WriteLine("Please Enter a Command to Progress: \n");
                 Console.WriteLine("open --> To Open an account\naccount --> To Perform transactions on an account\nquit --> To Exit the application ");
                 chooice = Console.ReadLine();   //take input for menu
@@ -73,7 +75,7 @@ namespace Developers_Bank
                             switch (chooice2)
                             {
                                 case "savings":
-                                    theBank.AddAccount(new Account(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
+                                    theBank.AddAccount(new Savings(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
                                     Console.WriteLine("--------------------------------");
                                     theBank.PrintAllAccounts();
                                     Console.WriteLine("--------------------------------");
@@ -82,7 +84,7 @@ namespace Developers_Bank
 
                                 case "checking":
 
-                                    theBank.AddAccount(new Account(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
+                                    theBank.AddAccount(new Checking(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
                                     flag2 = false;
                                     break;
 
@@ -106,11 +108,82 @@ namespace Developers_Bank
 
                     case "account":
 
-                        theBank.AccessAccount();
+                        while (flag3)
+                        {
+                            Console.WriteLine("----------------------------------------------------------------");
+                            Console.WriteLine(" \t  Make a  Transactions  With Developers Bank LTD");
+                            Console.WriteLine("----------------------------------------------------------------");
+
+                            Console.WriteLine("Please Enter a Command to Progress: \n");
+                            Console.WriteLine("deposit --> Make a deposit\nwithdraw --> Make a withdrawal\ntransfer --> Make a transfer\nshow --> Show the number transactions and balance\nquit --> Exit the application ");
+                            chooice = Console.ReadLine();
+
+                            switch (chooice)
+                            {
+                                
+                                case "deposite":
+
+                                    Console.WriteLine("Please Enter a Account Number: \n");
+                                    string teampAccount = Console.ReadLine();
+
+                                    Console.WriteLine("Please Enter Diposit Amount: \n");
+                                    double  teampAmount = Convert.ToDouble(Console.ReadLine());
+                                    
+                                    
+                                    theBank.Transaction(teampAmount, chooice, teampAccount);
+
+
+
+                                    break;
+
+                                case "withdraw":
+                                    //12312
+                                    Console.WriteLine("Please Enter a Account Number: \n");
+                                    teampAccount = Console.ReadLine();
+
+                                    Console.WriteLine("Please Enter Withdraw Amount: \n");
+                                    teampAmount = Convert.ToDouble(Console.ReadLine());
+
+                                    theBank.Transaction(teampAmount, chooice, teampAccount);
+
+                                    break;
+
+                                case "transfer":
+                                    Console.WriteLine("Please Enter Your Account Number: \n");
+                                    teampAccount = Console.ReadLine();
+
+                                    Console.WriteLine("Please Enter Transfer Amount: \n");
+                                    teampAmount = Convert.ToDouble(Console.ReadLine());
+
+                                    Console.WriteLine("Receiver Account Number: ");
+                                    string receiver = Console.ReadLine();
+
+                                    theBank.Transaction(teampAmount, chooice, teampAccount, receiver);
+
+                                    break;
+                                case "show":
+                                    Account obj;
+                                    Account.Show();
+
+                                    break;
+                                case "quit":
+
+                                    flag3 = false;
+
+                                    break;
+                                default:
+                                    Console.WriteLine("--------------------------------");
+                                    Console.WriteLine("Wrong Input!\nPlease try Again.");
+                                    Console.WriteLine("--------------------------------");
+                                    break;
+                            }
+
+                        }
+                        /*theBank.AccessAccount();
                         if (theBank.Flag == 1)
                         {
                             flag = false;
-                        }
+                        }*/
                         break;
 
                     case "quit":
