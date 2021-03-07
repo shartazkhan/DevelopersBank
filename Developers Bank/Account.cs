@@ -14,8 +14,8 @@ namespace Developers_Bank
         private double balance;
         private string dateOfBirth;
         private Address address;
-        
-
+        private int start = 999;
+        private int transCount = 0;
         public Account(string accountName,  string dateOfBirth, string accountType, double balance, Address address)
         {
             this.accountName = accountName;
@@ -62,38 +62,29 @@ namespace Developers_Bank
         //This method will auto generate account number. 
         public void AccountNumberGen()
          {
-             // 1- is for saving account and 2- is for cheking
-             int start = 999;
-             
-             if(this.accountType == "savings")
+            // 1- is for saving account and 2- is for cheking
+
+            this.start = start + 1;
+
+            if (this.accountType == "savings")
              {
-                start++;
+                
                 this.accountNumber = "1-"  + dateOfBirth + start;
                 
              }
              else
              {
-                start++;
+             
                 this.accountNumber = "2-" + dateOfBirth + start;
-              
-            }
+
+              }
              
          }
-
-        
-      /*  public Address Address
-        {
-            get { return this.address; }
-            set { this.address = value; }
-        }*/
-
-
-       
 
         //Withdraw 
         public void Withdraw(double amount,string tempType)
         {
-            
+            this.transCount++;
             if (tempType == "savings" && this.balance - amount >= 500 )
             {
                
@@ -113,19 +104,14 @@ namespace Developers_Bank
             }
             else
             {
-                
               Console.WriteLine("Withdaw Not possible");
-                
-
             }
-
-           
-
         }
 
         //Tranfer
-        public void Transfer(ref string receiver, double amount)
+        public void Transfer( double amount, string receiver)
         {
+            this.transCount++;
             Console.WriteLine("Transfer working");
             Console.WriteLine(receiver);
             Console.WriteLine(amount);
@@ -139,7 +125,7 @@ namespace Developers_Bank
         //Deposite
         public void Deposite(double amount)
         {
-
+            this.transCount++;
             this.balance = this.balance + amount;
             Console.WriteLine("Deposited!!");
         }
@@ -150,6 +136,14 @@ namespace Developers_Bank
             Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}\nDate of Birth: {3} ", this.accountNumber, this.accountName, this.balance, this.dateOfBirth);
             this.address.PrintAddress();
         }
+
+        public void Show()
+        {
+            Console.WriteLine("Trans: {0}\nBalance: {1}", this.transCount,balance);
+
+            
+        }
+
 
     }
 }

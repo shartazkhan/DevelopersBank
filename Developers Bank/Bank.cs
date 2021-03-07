@@ -16,7 +16,7 @@ namespace Developers_Bank
         private string teampAccount;
         private double teampAmount;
         private string receiver;
-      
+       
        
         public Bank(string bankName,int size)
         {
@@ -38,7 +38,7 @@ namespace Developers_Bank
 
                 switch (chooice)
                 {
-                    case "deposit":
+                    case "deposite":
 
                         Console.WriteLine("Please Enter a Account Number: \n");
                         teampAccount = Console.ReadLine();
@@ -47,10 +47,7 @@ namespace Developers_Bank
                         teampAmount = Convert.ToDouble(Console.ReadLine());
 
                         Transaction(teampAmount, chooice, teampAccount);
-                       /* if (myBank[temp].AccountNumber == teamp)
-                        {
-                            myBank[i].Deposite(amount);
-                        }*/
+                      
 
                         break;
 
@@ -67,17 +64,16 @@ namespace Developers_Bank
                         break;
 
                     case "transfer":
-                        Console.WriteLine("Please Enter a Receiver Account Number: \n");
-                        receiver = Console.ReadLine();
+                        Console.WriteLine("Please Enter Your Account Number: \n");
+                        teampAccount = Console.ReadLine();
 
                         Console.WriteLine("Please Enter Transfer Amount: \n");
                         teampAmount = Convert.ToDouble(Console.ReadLine());
+                        
+                        Console.WriteLine("Receiver Account Number: ");
+                         receiver = Console.ReadLine();
 
-                        Console.WriteLine("Please Your Account Number: \n");
-                        teampAccount = Console.ReadLine();
-
-                        Transaction(teampAmount, chooice, teampAccount, receiver);
-
+                        Transaction(teampAmount, chooice, teampAccount,receiver);
 
                         break;
                     case "show":
@@ -126,67 +122,50 @@ namespace Developers_Bank
         }
 
 
-        public void Transaction( double teampAmmount, string transType, params string[] optionalParams)
+        public void Transaction( double teampAmmount, string transType, params string[] tempAcn)
         {
-            string tempAcn;
-            string tempAcn2;
+            int length = myBank.Length;
 
-           try
-            {
-                tempAcn = optionalParams[0];
-                tempAcn2 = optionalParams[1];
-               
-            }
-            catch (Exception e)
-            {
-                tempAcn = optionalParams[0];
-                tempAcn2 = optionalParams[0];
-            }
-
-            for (int i = 0; i < myBank.Length; i++)
+            for (int i = 0; i < length; i++)
             {
                
                 if (myBank[i] == null)
                 {
-                    continue;
                     Console.WriteLine("Transaction method null case");
+                    continue;
+                   
                 }
-                else if ( myBank[i].AccountNumber == tempAcn && transType == "deposite")
+                else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposite")
                 {
+                   
                     myBank[i].Deposite(teampAmmount);
                     Console.WriteLine("Transaction method dipo");
                     break;
                 }
-                else if (myBank[i].AccountNumber == tempAcn && transType == "withdraw")
+                else if (myBank[i].AccountNumber == tempAcn[0] && transType == "withdraw")
                 {
-                    // accountType = teampAccount.Substring(0, 1);
+                  
                     Console.WriteLine("withdraw working");
                     myBank[i].Withdraw(teampAmmount, myBank[i].AccountType);
                    // check = true;
                     break;
                 }
-                else if (myBank[i].AccountNumber == tempAcn && transType == "transfer")
+                else if (myBank[i].AccountNumber == tempAcn[0] && transType == "transfer")
                 {
-                    Console.WriteLine("trans  working");
-                    //accountType = teampAccount.Substring(0, 1);
-                    myBank[i].Withdraw(teampAmmount, myBank[i].AccountType);
-                    for (int j = 0; j < myBank.Length; j++)
+                    
+
+                    for (int j = 0; j < length; j++)
                     {
-                        if (myBank[j].AccountNumber == tempAcn2)
+                        if (myBank[j].AccountNumber == tempAcn[1])
                         {
-                            
-                            myBank[j].Transfer(ref tempAcn2, teampAmmount);
+                            myBank[i].Withdraw(teampAmmount, myBank[i].AccountType);
+                            myBank[j].Transfer(teampAmmount, myBank[j].AccountType);
+                            break;
                         }
                         else
-                        {
-                            Console.WriteLine("Receiver account not found"); //
-                        }
+                        { continue; }
                     }
-                       
-
-                   
-                    
-                    break;
+                        break;
                 }
                 else
                 {
@@ -194,6 +173,8 @@ namespace Developers_Bank
                 }
 
             }
+
+            PrintAllAccounts();
 
         }
 
