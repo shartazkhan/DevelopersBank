@@ -9,7 +9,7 @@ namespace Developers_Bank
      class Bank
     {
         private string bankName;
-        private static Account[] myBank;
+        private Account[] myBank;
         public static int size;
         public int flag = 0;
        
@@ -20,31 +20,17 @@ namespace Developers_Bank
             myBank = new Account[size];
         } 
 
+        
         public Account[] MyBank
         {
-            get
-            {
-                return myBank;
-            }
-            set
-            {
-                myBank = value;
-            }
-        }
-        public Account[] Accounts
-        {
-            set { Bank.myBank = value; }
-            get { return Bank.myBank; }
-        }
-
-        public int Flag
-        {
-            set { this.flag = value; }
-            get { return this.flag; }
+            set { this.myBank = value; }
+            get { return this.myBank; }
         }
 
 
-        public void Transaction( double teampAmmount, string transType, params string[] tempAcn)
+
+
+        public void Transaction( double tempAmount, string transType, params string[] tempAcn)
         {
             int length = myBank.Length;
 
@@ -60,14 +46,14 @@ namespace Developers_Bank
                 else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposit")
                 {
                    
-                    myBank[i].Deposite(teampAmmount);
-                    Console.WriteLine("Dipo method working");
+                    myBank[i].Deposit(tempAmount);
+                    Console.WriteLine("Deposit method working");
                     break;
                 }
                 else if (myBank[i].AccountNumber == tempAcn[0] && transType == "withdraw")
                 {
 
-                    myBank[i].Withdraw(teampAmmount);
+                    myBank[i].Withdraw(tempAmount);
                     Console.WriteLine("withdraw working");
                     break;
 
@@ -79,14 +65,14 @@ namespace Developers_Bank
                     {
                         if (myBank[j].AccountNumber == tempAcn[1])
                         {   
-                            myBank[i].Withdraw(teampAmmount);
-                            myBank[j].Transfer(teampAmmount,tempAcn[1]);
+                            myBank[i].Withdraw(tempAmount);
+                            myBank[j].Transfer(tempAmount,tempAcn[1]);
                             break;
                         }
                         else
                         { continue; }
                     }
-                        break;
+                    break;
                 }
                 else
                 {
@@ -108,6 +94,9 @@ namespace Developers_Bank
                 if (myBank[i] == null)
                 {
                     myBank[i] = account;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nAccount Created Successfully!!\n");
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
                 }
             }

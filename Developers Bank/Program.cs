@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Developers_Bank
 {
-    internal class Program
+     class Program
     {
-       
-        public static bool flag = true;  //this flag is used for iteration and all exit the menu
-       
 
-        public static string chooice;
-        public static string chooice2;
+        public static bool flag = true;  //this flag is used for iteration and all exit the menu
+        public static string choice;
+        public static string choice2;
 
         private static void Main(string[] args)
         {
+            Console.Title = "Developers Bank LTD";
             Bank theBank = new Bank("Developer's bank", 100);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("----------------------------------------------------------------");
@@ -29,62 +28,64 @@ namespace Developers_Bank
                 bool flag2 = true;
                 bool flag3 = true;
                 Console.WriteLine("Please Enter a Command to Progress: \n");
-                Console.WriteLine("open --> To Open an account\naccount --> To Perform transactions on an account\nquit --> To Exit the application ");
-                chooice = Console.ReadLine();   //take input for menu
-                
+                Console.WriteLine("open --> To Open an account\naccount --> To Perform transactions on an account\nquit --> To Exit the application\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                choice = Console.ReadLine();   //take input for menu
+                Console.ForegroundColor = ConsoleColor.White;
                 // Menu 
-                switch (chooice)
+                switch (choice)
                 {
                     case "open":
 
                         while (flag2)
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("----------------------------------------------------------------");
                             Console.WriteLine(" \t  Creat an Account with Developers Bank LTD");
                             Console.WriteLine("----------------------------------------------------------------\n");
-
-                            Console.WriteLine("Name: ");
+                           
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("Name: ");
                             string name = Console.ReadLine();
 
-                            Console.WriteLine("Date of Birth: ");
-                            Console.WriteLine("Day:");
+                            Console.WriteLine("\nDate of Birth \n");
+                            Console.Write("Day: ");
                             string day = Console.ReadLine();
-                            Console.WriteLine("Month: ");
+                            Console.Write("Month: ");
                             string month = Console.ReadLine();
-                            Console.WriteLine("Year: ");
+                            Console.Write("Year: ");
                             string year = Console.ReadLine();
                             string dob = day + month + year;
-
-                            Console.WriteLine("House no: ");
+                            
+                            Console.Write("House no: ");
                             int houseNo = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Road no: ");
+                            Console.Write("Road no: ");
                             int roadNo = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("City: ");
+                            Console.Write("City: ");
                             string city = Console.ReadLine();
-                            Console.WriteLine("Country: ");
+                            Console.Write("Country: ");
                             string country = Console.ReadLine();
 
-                            Console.WriteLine("Starting Ammount: ");
+                            Console.Write("Starting Ammount: ");
                             double ammount = Convert.ToDouble(Console.ReadLine());
                             
 
-                            Console.WriteLine("Please Enter a Command to Progress: \n");
+                            Console.WriteLine("\nPlease Enter a Command to Progress: \n");
                             Console.WriteLine("savings --> Open a savings account\nchecking --> Open a checking account\nquit --> Exit the application ");
-                            chooice2 = Console.ReadLine();
 
-                            switch (chooice2)
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            choice2 = Console.ReadLine();
+                            Console.ForegroundColor = ConsoleColor.White;
+
+                            switch (choice2)
                             {
                                 case "savings":
-                                    theBank.AddAccount(new Savings(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
-                                    Console.WriteLine("--------------------------------");
-                                    theBank.PrintAllAccounts();
-                                    Console.WriteLine("--------------------------------");
+                                    theBank.AddAccount(new Savings(name, dob, choice2, ammount, new Address(houseNo, roadNo, city, country)));
                                     flag2 = false;
                                     break;
 
                                 case "checking":
-
-                                    theBank.AddAccount(new Checking(name, dob, chooice2, ammount, new Address(houseNo, roadNo, city, country)));
+                                    theBank.AddAccount(new Checking(name, dob, choice2, ammount, new Address(houseNo, roadNo, city, country)));
                                     flag2 = false;
                                     break;
 
@@ -115,23 +116,25 @@ namespace Developers_Bank
                             Console.WriteLine(" \t  Make a  Transactions  With Developers Bank LTD");
                             Console.WriteLine("----------------------------------------------------------------");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("Please Enter a Command to Progress: \n");
-                            Console.WriteLine("deposit --> Make a deposit\nwithdraw --> Make a withdrawal\ntransfer --> Make a transfer\nshow --> Show the number transactions and balance\nquit --> Exit the application ");
-                            chooice = Console.ReadLine();
+                            Console.WriteLine("\nPlease Enter a Command to Progress: \n");
+                            Console.WriteLine("deposit --> Make a deposit\nwithdraw --> Make a withdrawal\ntransfer --> Make a transfer\nshow --> Show the number transactions and balance\nquit --> Exit the application\n");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            choice = Console.ReadLine();
+                            Console.ForegroundColor = ConsoleColor.White;
 
-                            switch (chooice)
+                            switch (choice)
                             {
                                 
-                                case "deposite":
+                                case "deposit":
 
                                     Console.WriteLine("Please Enter a Account Number: \n");
                                     string teampAccount = Console.ReadLine();
 
-                                    Console.WriteLine("Please Enter Diposit Amount: \n");
+                                    Console.WriteLine("Please Enter Deposit Amount: \n");
                                     double  teampAmount = Convert.ToDouble(Console.ReadLine());
                                     
                                     
-                                    theBank.Transaction(teampAmount, chooice, teampAccount);
+                                    theBank.Transaction(teampAmount, choice, teampAccount);
 
                                     Console.WriteLine("----------------------------------------------------------------");
 
@@ -145,7 +148,7 @@ namespace Developers_Bank
                                     Console.WriteLine("Please Enter Withdraw Amount: \n");
                                     teampAmount = Convert.ToDouble(Console.ReadLine());
 
-                                    theBank.Transaction(teampAmount, chooice, teampAccount);
+                                    theBank.Transaction(teampAmount, choice, teampAccount);
 
                                     Console.WriteLine("----------------------------------------------------------------");
 
@@ -161,11 +164,11 @@ namespace Developers_Bank
                                     Console.WriteLine("Receiver Account Number: ");
                                     string receiver = Console.ReadLine();
 
-                                    theBank.Transaction(teampAmount, chooice, teampAccount, receiver);
+                                    theBank.Transaction(teampAmount, choice, teampAccount, receiver);
                                     Console.WriteLine("----------------------------------------------------------------");
                                     break;
                                 case "show":
-                                    Account obj;
+                                    
                                     Account.Show();
 
                                     break;
@@ -203,6 +206,7 @@ namespace Developers_Bank
             Console.WriteLine("----------------------------------------------------------------");
             Console.WriteLine(" \t\tThank you for staying with us!");
             Console.WriteLine("----------------------------------------------------------------");
+           
             Console.ReadKey();
         }
 

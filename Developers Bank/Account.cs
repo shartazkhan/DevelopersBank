@@ -65,7 +65,7 @@ namespace Developers_Bank
         public abstract void Transfer(double amount, string receiver);
 
         //Deposite
-        public abstract void Deposite(double amount);
+        public abstract void Deposit(double amount);
        
 
         public void PrintAccount()

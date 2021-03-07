@@ -47,7 +47,6 @@
     <Compile Include="Address.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Checking.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Idgeneeator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

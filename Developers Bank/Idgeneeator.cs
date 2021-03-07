@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Developers_Bank
 {
-    class Idgeneeator
+    internal class Idgenerator
     {
 
-        //taking system date to create an id for an account holder
         static int start = 999;
         string tempId;
         DateTime date = DateTime.Now;
 
-        public string Geneeator()
+        public string Generator()
         {
             string temp = DateTime.Now.ToString("yyyy-MM-");
             tempId = temp + ++start;

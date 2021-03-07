@@ -15,8 +15,8 @@ namespace Developers_Bank
             this.address = address;
             this.accountType = accountType;
             this.dateOfBirth = dateOfBirth;
-            Idgeneeator obj = new Idgeneeator();
-            this.AccountNumber = "1-" + obj.Geneeator();
+            Idgenerator obj = new Idgenerator();
+            this.AccountNumber = "1-" + obj.Generator();
             
         }
 
@@ -56,7 +56,7 @@ namespace Developers_Bank
         }
 
         //Deposite
-        override public void Deposite(double amount)
+        override public void Deposit(double amount)
         {
             ++Account.transCount;
             Console.WriteLine(Account.transCount);

@@ -16,25 +16,26 @@ namespace Developers_Bank
             this.address = Address;
             this.accountType = AccountType;
             this.dateOfBirth = DateOfBirth;
-            Idgeneeator obj = new Idgeneeator();
-            this.AccountNumber = "2-" + obj.Geneeator();
+            Idgenerator obj = new Idgenerator();
+            this.AccountNumber = "2-" + obj.Generator();
         }
+
 
         override public void Withdraw(double amount)
         {
-            Console.WriteLine("Withdaw checking");
+            Console.WriteLine("Withdraw checking");
             // this.transCount++;
             ++Account.transCount;
             if (Account.balance - amount >= 0)
             {
                 Account.balance = Account.balance - amount;
-                Console.WriteLine("Withdaw Successful");
+                Console.WriteLine("Withdraw Successful");
                 ++Account.transCount;
                 Console.WriteLine(Account.transCount);
             }
             else if (Account.balance - amount < 0)
             {
-                Console.WriteLine("Withdaw Not possible. \nSavings Account balance can not be less than 0 TAKA.");
+                Console.WriteLine("Withdraw Not possible. \nSavings Account balance can not be less than 0 TAKA.");
             }
         }
 
@@ -54,7 +55,7 @@ namespace Developers_Bank
         }
 
         //Deposite
-        override public void Deposite(double amount)
+        override public void Deposit(double amount)
         {
             ++Account.transCount;
             Console.WriteLine(Account.transCount);
