@@ -20,18 +20,29 @@ namespace Developers_Bank
             this.AccountNumber = "2-" + obj.Generator();
         }
 
-
-        override public void Withdraw(double amount)
+        //Withdraw
+        public override void Withdraw(double amount)
         {
-            Console.WriteLine("Withdraw checking");
+           
             // this.transCount++;
             ++Account.transCount;
             if (Account.balance - amount >= 0)
             {
-                Account.balance = Account.balance - amount;
-                Console.WriteLine("Withdraw Successful");
-                ++Account.transCount;
-                Console.WriteLine(Account.transCount);
+                if (amount < 0)
+                {
+                    amount = -amount;
+                    Account.balance = Account.balance - amount;
+                    Console.WriteLine("Withdraw Successful");
+                    ++Account.transCount;
+
+                }
+                else
+                {
+                    Account.balance = Account.balance - amount;
+                    Console.WriteLine("Withdraw Successful");
+                    ++Account.transCount;
+                }
+
             }
             else if (Account.balance - amount < 0)
             {
@@ -39,8 +50,8 @@ namespace Developers_Bank
             }
         }
 
-        //Tranfer
-        override public void Transfer(double amount, string receiver)
+        //Transfer
+        public override void Transfer(double amount, string receiver)
         {
             ++Account.transCount;
             Console.WriteLine(Account.transCount);
@@ -54,8 +65,8 @@ namespace Developers_Bank
 
         }
 
-        //Deposite
-        override public void Deposit(double amount)
+        //Deposit
+        public override void Deposit(double amount)
         {
             ++Account.transCount;
             Console.WriteLine(Account.transCount);

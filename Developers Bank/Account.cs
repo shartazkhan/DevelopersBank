@@ -23,8 +23,6 @@ namespace Developers_Bank
             this.address = address;
             this.accountType = accountType;
             this.dateOfBirth = dateOfBirth;
-            
-           
         }
 
         public string AccountNumber
@@ -61,24 +59,24 @@ namespace Developers_Bank
         //Withdraw 
         public abstract void Withdraw(double amount);
 
-        //Tranfer
+        //Transfer
         public abstract void Transfer(double amount, string receiver);
 
-        //Deposite
+        //Deposit
         public abstract void Deposit(double amount);
        
 
         public void PrintAccount()
         {
 
-            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}\nDate of Birth: {3} ", this.accountNumber, this.accountName, Account.balance, this.dateOfBirth);
+            Console.WriteLine("\n\tAccount No:{0}\n\tAccount Name:{1}\n\tBalance:{2}\n\tDate of Birth: {3} ", this.accountNumber, this.accountName, Account.balance, this.dateOfBirth);
             this.address.PrintAddress();
         }
 
         public static void Show()
         {
 
-            Console.WriteLine("Trans: {0}\nBalance: {1}", Account.transCount, Account.balance);
+            Console.WriteLine("\tTrans: {0}\n\tBalance: {1}", Account.transCount, Account.balance);
             
         }
 

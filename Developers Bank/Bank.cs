@@ -39,22 +39,25 @@ namespace Developers_Bank
                
                 if (myBank[i] == null)
                 {
-                    Console.WriteLine("Transaction method null case");
-                    continue;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("----------------------------------------------------------------");
+                    Console.WriteLine("\t\t\tAccount Not Found!!");
+                    Console.WriteLine("----------------------------------------------------------------");
+                    break;
                    
                 }
                 else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposit")
                 {
                    
                     myBank[i].Deposit(tempAmount);
-                    Console.WriteLine("Deposit method working");
+                    
                     break;
                 }
                 else if (myBank[i].AccountNumber == tempAcn[0] && transType == "withdraw")
                 {
 
                     myBank[i].Withdraw(tempAmount);
-                    Console.WriteLine("withdraw working");
+                    
                     break;
 
                 }
@@ -95,7 +98,7 @@ namespace Developers_Bank
                 {
                     myBank[i] = account;
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nAccount Created Successfully!!\n");
+                    Console.WriteLine("\n\t\tAccount Created Successfully!!\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 }
@@ -106,7 +109,9 @@ namespace Developers_Bank
         
         public void PrintAllAccounts()
         {
-            Console.WriteLine("-----------------" + bankName + "-----------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\t----------------- Account Info -----------------");
+            Console.ForegroundColor = ConsoleColor.White;
             for (int i = 0; i < myBank.Length; i++)
             {
                 if (myBank[i] == null)
@@ -115,7 +120,9 @@ namespace Developers_Bank
                 }
                 myBank[i].PrintAccount();
             }
-            Console.WriteLine("-----------------" + "######" + "-----------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\t---------------------" + "######" + "--------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         

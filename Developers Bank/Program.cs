@@ -27,8 +27,8 @@ namespace Developers_Bank
             {
                 bool flag2 = true;
                 bool flag3 = true;
-                Console.WriteLine("Please Enter a Command to Progress: \n");
-                Console.WriteLine("open --> To Open an account\naccount --> To Perform transactions on an account\nquit --> To Exit the application\n");
+                Console.WriteLine("\tPlease Enter a Command to Progress: \n");
+                Console.WriteLine("\topen --> To Open an account\n\taccount --> To Perform transactions on an account\n\tquit --> To Exit the application\n");
                 Console.ForegroundColor = ConsoleColor.Red;
                 choice = Console.ReadLine();   //take input for menu
                 Console.ForegroundColor = ConsoleColor.White;
@@ -41,37 +41,37 @@ namespace Developers_Bank
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("----------------------------------------------------------------");
-                            Console.WriteLine(" \t  Creat an Account with Developers Bank LTD");
+                            Console.WriteLine(" \t  Create an Account with Developers Bank LTD");
                             Console.WriteLine("----------------------------------------------------------------\n");
                            
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("Name: ");
+                            Console.Write("\tName: ");
                             string name = Console.ReadLine();
 
-                            Console.WriteLine("\nDate of Birth \n");
-                            Console.Write("Day: ");
+                            Console.WriteLine("\n\tDate of Birth \n");
+                            Console.Write("\tDay: ");
                             string day = Console.ReadLine();
-                            Console.Write("Month: ");
+                            Console.Write("\tMonth: ");
                             string month = Console.ReadLine();
-                            Console.Write("Year: ");
+                            Console.Write("\tYear: ");
                             string year = Console.ReadLine();
                             string dob = day + month + year;
                             
-                            Console.Write("House no: ");
+                            Console.Write("\tHouse no: ");
                             int houseNo = Convert.ToInt32(Console.ReadLine());
-                            Console.Write("Road no: ");
+                            Console.Write("\tRoad no: ");
                             int roadNo = Convert.ToInt32(Console.ReadLine());
-                            Console.Write("City: ");
+                            Console.Write("\tCity: ");
                             string city = Console.ReadLine();
-                            Console.Write("Country: ");
+                            Console.Write("\tCountry: ");
                             string country = Console.ReadLine();
 
-                            Console.Write("Starting Ammount: ");
-                            double ammount = Convert.ToDouble(Console.ReadLine());
+                            Console.Write("\tStarting Amount: ");
+                            double amount = Convert.ToDouble(Console.ReadLine());
                             
 
-                            Console.WriteLine("\nPlease Enter a Command to Progress: \n");
-                            Console.WriteLine("savings --> Open a savings account\nchecking --> Open a checking account\nquit --> Exit the application ");
+                            Console.WriteLine("\n\tPlease Enter a Command to Progress: \n");
+                            Console.WriteLine("\tsavings --> Open a savings account\n\tchecking --> Open a checking account\n\tquit --> Exit the application ");
 
                             Console.ForegroundColor = ConsoleColor.Red;
                             choice2 = Console.ReadLine();
@@ -80,12 +80,12 @@ namespace Developers_Bank
                             switch (choice2)
                             {
                                 case "savings":
-                                    theBank.AddAccount(new Savings(name, dob, choice2, ammount, new Address(houseNo, roadNo, city, country)));
+                                    theBank.AddAccount(new Savings(name, dob, choice2, amount, new Address(houseNo, roadNo, city, country)));
                                     flag2 = false;
                                     break;
 
                                 case "checking":
-                                    theBank.AddAccount(new Checking(name, dob, choice2, ammount, new Address(houseNo, roadNo, city, country)));
+                                    theBank.AddAccount(new Checking(name, dob, choice2, amount, new Address(houseNo, roadNo, city, country)));
                                     flag2 = false;
                                     break;
 
@@ -95,16 +95,16 @@ namespace Developers_Bank
 
                                     break;
                                 default:
-                                    Console.WriteLine("--------------------------------");
-                                    Console.WriteLine("Wrong Input!\nPlease try Again.");
-                                    Console.WriteLine("--------------------------------");
+                                    Console.WriteLine("\t--------------------------------");
+                                    Console.WriteLine("\tWrong Input!\nPlease try Again.");
+                                    Console.WriteLine("\t--------------------------------");
                                     break;
                             }
 
                         }
-                        Console.WriteLine("--------------------------------");
+                       
                         theBank.PrintAllAccounts();
-                        Console.WriteLine("--------------------------------");
+                     
                         break;
 
                     case "account":
@@ -116,8 +116,8 @@ namespace Developers_Bank
                             Console.WriteLine(" \t  Make a  Transactions  With Developers Bank LTD");
                             Console.WriteLine("----------------------------------------------------------------");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\nPlease Enter a Command to Progress: \n");
-                            Console.WriteLine("deposit --> Make a deposit\nwithdraw --> Make a withdrawal\ntransfer --> Make a transfer\nshow --> Show the number transactions and balance\nquit --> Exit the application\n");
+                            Console.WriteLine("\n\tPlease Enter a Command to Progress: \n");
+                            Console.Write("\tdeposit --> Make a deposit\n\twithdraw --> Make a withdrawal\n\ttransfer --> Make a transfer\n\tshow --> Show the number transactions and balance\n\tquit --> Exit the application\n");
                             Console.ForegroundColor = ConsoleColor.Red;
                             choice = Console.ReadLine();
                             Console.ForegroundColor = ConsoleColor.White;
@@ -127,44 +127,42 @@ namespace Developers_Bank
                                 
                                 case "deposit":
 
-                                    Console.WriteLine("Please Enter a Account Number: \n");
-                                    string teampAccount = Console.ReadLine();
+                                    Console.Write("\tPlease Enter a Account Number: ");
+                                    string tempAccount = Console.ReadLine();
 
-                                    Console.WriteLine("Please Enter Deposit Amount: \n");
-                                    double  teampAmount = Convert.ToDouble(Console.ReadLine());
-                                    
-                                    
-                                    theBank.Transaction(teampAmount, choice, teampAccount);
+                                    Console.Write("\tPlease Enter Deposit Amount: ");
+                                    double  tempAmount = Convert.ToDouble(Console.ReadLine());
 
+                                    theBank.Transaction(tempAmount, choice, tempAccount);
                                     Console.WriteLine("----------------------------------------------------------------");
 
                                     break;
 
                                 case "withdraw":
-                                    //12312
-                                    Console.WriteLine("Please Enter a Account Number: \n");
-                                    teampAccount = Console.ReadLine();
+                                  
+                                    Console.Write("\tPlease Enter a Account Number: ");
+                                    tempAccount = Console.ReadLine();
 
-                                    Console.WriteLine("Please Enter Withdraw Amount: \n");
-                                    teampAmount = Convert.ToDouble(Console.ReadLine());
+                                    Console.Write("\tPlease Enter Withdraw Amount: ");
+                                    tempAmount = Convert.ToDouble(Console.ReadLine());
 
-                                    theBank.Transaction(teampAmount, choice, teampAccount);
+                                    theBank.Transaction(tempAmount, choice, tempAccount);
 
                                     Console.WriteLine("----------------------------------------------------------------");
 
                                     break;
 
                                 case "transfer":
-                                    Console.WriteLine("Please Enter Your Account Number: \n");
-                                    teampAccount = Console.ReadLine();
+                                    Console.Write("\tPlease Enter Your Account Number: ");
+                                    tempAccount = Console.ReadLine();
 
-                                    Console.WriteLine("Please Enter Transfer Amount: \n");
-                                    teampAmount = Convert.ToDouble(Console.ReadLine());
+                                    Console.Write("\tPlease Enter Transfer Amount: ");
+                                    tempAmount = Convert.ToDouble(Console.ReadLine());
 
-                                    Console.WriteLine("Receiver Account Number: ");
+                                    Console.Write("\tReceiver Account Number: ");
                                     string receiver = Console.ReadLine();
 
-                                    theBank.Transaction(teampAmount, choice, teampAccount, receiver);
+                                    theBank.Transaction(tempAmount, choice, tempAccount, receiver);
                                     Console.WriteLine("----------------------------------------------------------------");
                                     break;
                                 case "show":
@@ -178,9 +176,9 @@ namespace Developers_Bank
                                     Console.WriteLine("----------------------------------------------------------------");
                                     break;
                                 default:
-                                    Console.WriteLine("--------------------------------");
-                                    Console.WriteLine("Wrong Input!\nPlease try Again.");
-                                    Console.WriteLine("--------------------------------");
+                                    Console.WriteLine("\t--------------------------------");
+                                    Console.WriteLine("\tWrong Input!\nPlease try Again.");
+                                    Console.WriteLine("\t--------------------------------");
                                     break;
                             }
 
@@ -194,9 +192,9 @@ namespace Developers_Bank
                         //Console.WriteLine("----------------------------------------------------------------");
                         break;
                     default:
-                        Console.WriteLine("--------------------------------");
-                        Console.WriteLine("Wrong Input!\nPlease try Again.");
-                        Console.WriteLine("--------------------------------");
+                        Console.WriteLine("\t--------------------------------");
+                        Console.WriteLine("\tWrong Input!\nPlease try Again.");
+                        Console.WriteLine("\t--------------------------------");
                         break;
 
                 }

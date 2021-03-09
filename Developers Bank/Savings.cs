@@ -15,48 +15,52 @@ namespace Developers_Bank
             this.address = address;
             this.accountType = accountType;
             this.dateOfBirth = dateOfBirth;
+
             Idgenerator obj = new Idgenerator();
             this.AccountNumber = "1-" + obj.Generator();
-            
         }
 
         //Withdraw 
-        override public void Withdraw(double amount)
+        public override void Withdraw(double amount)
         {
-            Console.WriteLine("Withdaw savings");
+            Console.WriteLine("Withdraw savings");
 
-            if (Account.balance - amount > 0)
+            if (Account.balance - amount > 0) 
             {
-                Account.balance = Account.balance - amount;
-                Console.WriteLine("Withdaw Successful");
-                ++Account.transCount;
-                Console.WriteLine(Account.transCount);
+                if (amount < 0)
+                {
+                    amount = -amount;
+                    Account.balance = Account.balance - amount;
+                    Console.WriteLine("Withdraw Successful");
+                    ++Account.transCount;
+
+                }
+                else
+                {
+                    Account.balance = Account.balance - amount;
+                    Console.WriteLine("Withdraw Successful");
+                    ++Account.transCount;
+                }
+
             }
             else if (Account.balance - amount <= 0)
             {
-                Console.WriteLine("Withdaw Not possible. \nSavings Account balance can not be 0 TAKA.");
+                Console.WriteLine("Withdraw Not possible. \nSavings Account balance can not be 0 TAKA.");
             }
             
 
         }
 
-        //Tranfer
-        override public void Transfer(double amount, string receiver)
+        //Transfer
+        public override void Transfer(double amount, string receiver)
         {
-           
-            
-            
-            Console.WriteLine(receiver);
-            Console.WriteLine(amount);
-
             Account.balance = Account.balance + amount;
             Console.WriteLine("Transfer Successfully Completed");
             ++Account.transCount;
-            Console.WriteLine(Account.transCount);
         }
 
-        //Deposite
-        override public void Deposit(double amount)
+        //Deposit
+        public override void Deposit(double amount)
         {
             ++Account.transCount;
             Console.WriteLine(Account.transCount);
