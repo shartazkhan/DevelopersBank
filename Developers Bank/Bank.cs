@@ -34,6 +34,7 @@ namespace Developers_Bank
         {
             int length = myBank.Length;
 
+
             for (int i = 0; i < length; i++)
             {
                
@@ -45,6 +46,13 @@ namespace Developers_Bank
                     Console.WriteLine("----------------------------------------------------------------");
                     break;
                    
+                }
+                else if (tempAmount < 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\t\tAmount of Transaction can not be a negative!!\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
                 }
                 else if ( myBank[i].AccountNumber == tempAcn[0] && transType == "deposit")
                 {

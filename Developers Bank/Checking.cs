@@ -28,20 +28,10 @@ namespace Developers_Bank
             ++Account.transCount;
             if (Account.balance - amount >= 0)
             {
-                if (amount < 0)
-                {
-                    amount = -amount;
+               
                     Account.balance = Account.balance - amount;
                     Console.WriteLine("Withdraw Successful");
                     ++Account.transCount;
-
-                }
-                else
-                {
-                    Account.balance = Account.balance - amount;
-                    Console.WriteLine("Withdraw Successful");
-                    ++Account.transCount;
-                }
 
             }
             else if (Account.balance - amount < 0)

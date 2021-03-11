@@ -24,23 +24,18 @@ namespace Developers_Bank
         public override void Withdraw(double amount)
         {
 
-            if (Account.balance - amount > 0) 
+            if (Account.balance - amount > 0 && amount >  0) 
             {
-                if (amount < 0)
-                {
-                    amount = -amount;
+                
                     Account.balance = Account.balance - amount;
                     Console.WriteLine("Withdraw Successful");
                     ++Account.transCount;
+                
 
-                }
-                else
-                {
-                    Account.balance = Account.balance - amount;
-                    Console.WriteLine("Withdraw Successful");
-                    ++Account.transCount;
-                }
-
+            }
+            else if (amount < 0)
+            {
+                Console.WriteLine("Withdraw Not possible. \nSavings Account balance can not be 0 TAKA.");
             }
             else if (Account.balance - amount <= 0)
             {
