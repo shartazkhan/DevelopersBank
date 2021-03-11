@@ -23,7 +23,6 @@ namespace Developers_Bank
         //Withdraw 
         public override void Withdraw(double amount)
         {
-            Console.WriteLine("Withdraw savings");
 
             if (Account.balance - amount > 0) 
             {
